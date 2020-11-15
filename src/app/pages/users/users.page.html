@@ -1,0 +1,65 @@
+<ion-header>
+  <app-menu></app-menu>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row class="ion-justify-content-center margin p-4">
+      <ion-col size-sm="6">
+
+        <div class="box">
+          <ion-item lines="none" text-center>
+            <ion-label color="primary" class="h5">REGISTRAR NUEVO USUARIO</ion-label>
+          </ion-item>
+
+          <form [formGroup]="form" (ngSubmit)="registrar()">
+            <ion-item>
+              <ion-label position="floating">Role</ion-label>
+              <ion-select placeholder="Seleccione Una" formControlName="role">
+                <ion-select-option value="1">Administrador</ion-select-option>
+                <ion-select-option value="2">Normal</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Usuario</ion-label>
+              <ion-input type="text" formControlName="user"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Contraseña</ion-label>
+              <ion-input type="password" formControlName="pass"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Repite la Contraseña</ion-label>
+              <ion-input type="password" formControlName="pass2"></ion-input>
+            </ion-item>
+            <ion-button expand="full" color="primary" [disabled]="!form.valid" type="submit">REGISTRARSE</ion-button>
+          </form>
+        </div>
+
+
+      </ion-col>
+      <ion-col size-sm="6">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">usuario</th>
+              <th scope="col">Role</th>           
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of users">
+              <th scope="row">1</th>
+              <td>{{item.user}}</td>
+              <td *ngIf="item.role==1">Administrador</td>
+              <td *ngIf="item.role==2">Normal</td>               
+            </tr>       
+          </tbody>
+        </table>
+
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

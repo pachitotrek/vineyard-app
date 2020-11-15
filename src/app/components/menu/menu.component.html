@@ -1,0 +1,23 @@
+<ion-toolbar color="dark">
+  <ion-buttons slot="start" class="box menu">
+    <ion-img src="/assets/img/logo.png" class="logo"></ion-img>
+    <ion-button *ngFor="let item of pages" (click)="nav(item.link)" >
+      {{item.pagina}}
+    </ion-button>
+     
+    <ion-button (click)="logout()">
+      Cerrar Sesion
+    </ion-button>  
+    <ion-button color="light">
+        Usuario:{{usuario.user}}
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons slot="start" class="box toogle">
+    <ion-img src="/assets/img/logo.png" class="logo"></ion-img>
+  </ion-buttons>
+  <ion-buttons slot="end" class="box toogle">
+    <ion-button (click)="menutoogle()">
+      <ion-icon slot="start" name="menu" size="large"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>

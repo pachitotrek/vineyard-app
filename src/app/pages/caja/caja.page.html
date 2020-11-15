@@ -1,0 +1,96 @@
+<ion-header>
+  <app-menu></app-menu>
+</ion-header>
+
+<ion-content>
+  <!-- <app-publicidad></app-publicidad> -->
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col size-sm="12">
+        <ion-card color="tertiary">
+          <ion-grid>
+            <ion-row>
+              <ion-col size-sm="12" text-center>
+
+                <ion-text color="light">
+                  <h2>{{item.titulo}}</h2>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size-sm="6" text-center>
+                <ion-text color="light">
+                  <h4>Hora Actual</h4>
+                </ion-text>
+                <ion-text color="light">
+                  <h5>{{today | date:'hh:mm:ss a':'-0500'}}</h5>
+                </ion-text>
+              </ion-col>
+              <ion-col size-sm="6" text-center>
+                <ion-text color="light">
+                  <h4>No Personas</h4>
+                </ion-text>
+                <form action="" [formGroup]="check1">
+                    <ion-select placeholder="Seleccionar" formControlName="b" (ionChange)="change($event);">
+                        <ion-select-option *ngFor="let x of numeros" [value]="x.n">{{x.n}}</ion-select-option>
+                      </ion-select>
+                </form>
+                <!-- <ion-label>No Personas</ion-label> -->
+            
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size-sm="12" text-center>
+                <ion-text color="light">
+                  <h4>Observaciones</h4>
+                </ion-text>
+                <div class="form-check" *ngFor="let o of opciones">
+                  <form action="" [formGroup]="check">                
+                    <input class="form-check-input checkbox" type="checkbox" formControlName="a" [value]="o.titulo" (click)="setOpciones(o.titulo);" >    
+                    <label class="form-check-label ml-3 mt-3" for="defaultCheck1">
+                        <h5> {{o.titulo}} </h5>
+                    </label>
+                  </form>
+                </div>           
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size-sm="12" text-center>
+                <ion-button color="light" (click)="send()" [disabled]="!check1.valid">
+                  ENVIAR
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+<!-- <div id="caja" text-center *ngIf="ready" style="max-width: 78mm;">
+  <div class="card mb" style="padding: 0px;">
+    <div class="card-body mb">
+      <h5 class="card-title" style="margin-bottom: 0px;">Comanda No {{datos.no}}</h5>
+      <p class="card-text" style="margin-top: 0px;">Sistema de Registro</p>
+    </div>
+    <div class="card-body mb">
+      <p style="margin-bottom: 0px;">Hora de Pedido</p>
+      <h5 style="margin-top: 0px;">{{datos.fecha | date:'hh:mm:ss a':'-0500'}}</h5>
+    </div>
+    <div style="display: flex;flex-direction: row;justify-content: space-around;">
+      <div>
+        <h5 class="h5">{{datos.menu.titulo}}</h5>
+      </div>
+      <div>
+        <p style="margin-bottom: 0px;">No de Personas</p>
+        <h5 style="margin-top: 0px;">{{datos.personas}}</h5>
+      </div>
+    </div>
+    <div style="display: flex;flex-direction: column;">
+      <p *ngFor="let a of datos.opciones" style="margin: 0px;"><strong>{{a.titulo}}</strong></p>   
+    </div>
+  </div>
+</div> -->

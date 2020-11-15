@@ -1,0 +1,33 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="overlay" *ngIf="active">
+      <ion-header>
+        <ion-toolbar color="dark">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content color="dark" class="ion-no-padding">
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages" color="dark">
+            <ion-item lines="none" [routerDirection]="'root'" [routerLink]="[p.link]" color="dark">
+              <ion-label>
+                {{p.pagina}}
+              </ion-label>
+            </ion-item>            
+          </ion-menu-toggle>
+          <ion-item lines="none" color="dark" (click)="logout()">
+            <ion-label>
+              Cerrar Sesion
+            </ion-label>
+          </ion-item>
+          <ion-item lines="none" color="dark">
+              <ion-label>
+                {{usuario.nombre}}
+              </ion-label>
+            </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

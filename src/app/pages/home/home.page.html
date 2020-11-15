@@ -1,0 +1,24 @@
+<ion-header>
+  <app-menu></app-menu>
+</ion-header>
+
+<ion-content>
+  <app-publicidad></app-publicidad>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of items">
+        <ion-card color="tertiary" [routerLink]="[item.url]" routerLinkActive="router-link-active"  >
+          <ion-card-header>
+            <ion-card-subtitle color="medium">Panel Administrativo</ion-card-subtitle>
+            <ion-card-title>{{item.nombre}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{item.descripcion}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

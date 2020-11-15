@@ -1,0 +1,59 @@
+<ion-header>
+  <app-menu></app-menu>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-justify-content-center margin">
+        <ion-col size-sm="6" text-center>
+          <div class="box">
+            <ion-item lines="none" text-center>
+              <ion-label color="primary" class="h5">REGISTRARSE</ion-label>
+            </ion-item>
+  
+            <form [formGroup]="form" (ngSubmit)="crear()">
+              <ion-item>
+                <ion-label position="floating">Titulo</ion-label>
+                <ion-input type="text" formControlName="titulo"></ion-input>
+              </ion-item>            
+              <ion-button expand="full" color="success" [disabled]="!form.valid" *ngIf="!update" type="submit">CREAR</ion-button>
+              <ion-button expand="full" color="primary" [disabled]="!form.valid" *ngIf="update" type="button" (click)="updateMenu()">ACTUALIZAR</ion-button>
+            </form>
+          </div>
+        </ion-col>
+        <ion-col size-sm="6">
+          <div class="text-center mt-3">
+            <h4>Menú Actual</h4>
+          </div>
+          <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Titulo</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let x of data">
+                  <th scope="row">{{x.titulo}}</th>
+                  <td>
+                    <ion-button (click)="setMenu(x)" color="warning">
+                      Editar
+                    </ion-button>
+                  </td>
+                  <td>
+                    <ion-button (click)="eliminarMenu(x._id)" color="danger">
+                      Eliminar
+                    </ion-button>
+                  </td>
+                </tr>
+             
+              </tbody>
+            </table>   
+
+        </ion-col>
+  
+      </ion-row>
+    </ion-grid>
+  
+  </ion-content>

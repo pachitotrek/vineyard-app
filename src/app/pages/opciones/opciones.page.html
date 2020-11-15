@@ -1,0 +1,68 @@
+<ion-header>
+  <app-menu></app-menu>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-justify-content-center margin">
+      <ion-col size-sm="6" text-center>
+        <div class="box">
+          <ion-item lines="none" text-center>
+            <ion-label color="primary" class="h5">REGISTRAR OPCIONES</ion-label>
+          </ion-item>
+
+          <form [formGroup]="form" (ngSubmit)="crear()">
+            <ion-item>
+              <ion-label position="floating">Opcion</ion-label>
+              <ion-input type="text" formControlName="titulo"></ion-input>
+            </ion-item>
+            <!-- <ion-item style="margin-bottom: 5vh;">
+              <ion-label position="floating">Tipo</ion-label>
+              <ion-select placeholder="Seleccione Una" formControlName="tipo">
+                <ion-select-option value="1">Grupo 1</ion-select-option>
+                <ion-select-option value="2">Grupo 2</ion-select-option>
+                <ion-select-option value="3">Grupo 3</ion-select-option>
+              </ion-select>
+            </ion-item> -->
+            <ion-button expand="full" color="success" class="ion-margin-top" [disabled]="!form.valid" *ngIf="!update"
+              type="submit">CREAR</ion-button>
+            <ion-button expand="full" color="primary" [disabled]="!form.valid" *ngIf="update" type="button"
+              (click)="updateMenu()">ACTUALIZAR</ion-button>
+          </form>
+        </div>
+      </ion-col>
+      <ion-col size-sm="6">
+        <div class="text-center mt-3">
+          <h4>Opciones Actuales</h4>
+        </div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Titulo</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of data">
+              <th scope="row">{{x.titulo}}</th>
+              <td>
+                <ion-button (click)="setOpcion(x)" color="warning">
+                  Editar
+                </ion-button>
+              </td>
+              <td>
+                <ion-button (click)="eliminarMenu(x._id)" color="danger">
+                  Eliminar
+                </ion-button>
+              </td>
+            </tr>
+         
+          </tbody>
+        </table>    
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
